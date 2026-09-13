@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BRIDFORE – Bright Dream Forest</title>
+  <meta name="description" content="BRIDFORE는 평생교육, 진로설계, 디지털 역량 교육을 통해 삶과 미래를 잇는 사람 중심의 교육 브랜드입니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo" onclick="goHome(event)">
+      <div class="logo-img-wrap">
+          <img src="./logo.png" alt="">
+      </div>
+      <div class="logo-text" id="logo-text">
+        <span class="logo-brand">BRIDFORE</span>
+        <span class="logo-sub">Bright Dream Forest</span>
+      </div>
+    </a>
+    <nav class="nav-menu" id="navMenu">
+      <a class="nav-link" onclick="closeMenu();showMainSite();scrollToSection('about')">BRIDFORE 소개</a>
+      <a class="nav-link" onclick="closeMenu();showMainSite();scrollToSection('programs-section')">사업·프로그램</a>
+      <a class="nav-link" onclick="closeMenu();showMainSite();scrollToSection('news-section')">소식</a>
+      <a class="nav-link" onclick="closeMenu();showMainSite();scrollToSection('resources-section')">자료·콘텐츠</a>
+      <a class="nav-link" onclick="closeMenu();showMainSite();scrollToSection('press-section')">언론·활동</a>
+      <button class="nav-cta-btn" onclick="closeMenu();showMainSite();scrollToSection('contact')">문의하기</button>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="메뉴" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== MAIN SITE ===== -->
+<main id="mainSite">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-deco" aria-hidden="true">
+
+      <!-- 좌상단: 큰 나뭇잎 실루엣 (배경보다 밝은 톤온톤) -->
+      <svg class="hero-deco-icon hdi-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 190 C0 130, 10 55, 65 18 C108 -8, 175 8, 188 62 C200 115, 158 175, 95 190 C58 198, 14 210, 10 190Z"
+          fill="rgba(80,170,110,.18)"/>
+        <path d="M10 190 C55 145, 115 80, 188 62"
+          stroke="rgba(90,180,115,.10)" stroke-width="2.5" fill="none"/>
+      </svg>
+
+      <!-- 우상단: 기어/톱니 태양 (배경보다 살짝 밝은 톤온톤) -->
+      <svg class="hero-deco-icon hdi-2" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="28" stroke="rgba(90,185,120,.20)" stroke-width="7" fill="none"/>
+        <circle cx="60" cy="60" r="14" fill="rgba(90,185,120,.18)"/>
+        <!-- 톱니 8개 -->
+        <rect x="54" y="4"  width="12" height="20" rx="4" fill="rgba(90,185,120,.18)" transform="rotate(0 60 60)"/>
+        <rect x="54" y="4"  width="12" height="20" rx="4" fill="rgba(90,185,120,.18)" transform="rotate(45 60 60)"/>
+        <rect x="54" y="4"  width="12" height="20" rx="4" fill="rgba(90,185,120,.18)" transform="rotate(90 60 60)"/>
+        <rect x="54" y="4"  width="12" height="20" rx="4" fill="rgba(90,185,120,.18)" transform="rotate(135 60 60)"/>
+        <rect x="54" y="4"  width="12" height="20" rx="4" fill="rgba(90,185,120,.18)" transform="rotate(180 60 60)"/>
+        <rect x="54" y="4"  width="12" height="20" rx="4" fill="rgba(90,185,120,.18)" transform="rotate(225 60 60)"/>
+        <rect x="54" y="4"  width="12" height="20" rx="4" fill="rgba(90,185,120,.18)" transform="rotate(270 60 60)"/>
+        <rect x="54" y="4"  width="12" height="20" rx="4" fill="rgba(90,185,120,.18)" transform="rotate(315 60 60)"/>
+      </svg>
+
+      <!-- 우중단: 단일 나뭇잎 (대각선, 배경보다 살짝 밝은 톤) -->
+      <svg class="hero-deco-icon hdi-3" viewBox="0 0 140 180" xmlns="http://www.w3.org/2000/svg">
+        <path d="M70 170 L70 90" stroke="rgba(85,180,115,.20)" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <path d="M70 90 C42 84, 14 64, 20 38 C26 15, 58 16, 68 42 C60 58, 64 78, 70 90Z"
+          fill="rgba(85,180,115,.20)"/>
+        <path d="M70 90 C98 84, 126 64, 120 38 C114 15, 82 16, 72 42 C80 58, 76 78, 70 90Z"
+          fill="rgba(75,168,105,.18)"/>
+      </svg>
+
+      <!-- 우하단: 세 갈래 나뭇잎 (배경보다 밝은 톤) -->
+      <svg class="hero-deco-icon hdi-4" viewBox="0 0 180 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- 줄기 -->
+        <path d="M90 195 L90 130" stroke="rgba(85,180,115,.22)" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <!-- 왼쪽 큰 잎 -->
+        <path d="M87 145 C60 140, 28 120, 34 96 C40 76, 70 78, 84 100 C82 116, 85 134, 87 145Z"
+          fill="rgba(88,182,116,.20)"/>
+        <!-- 오른쪽 잎 -->
+        <path d="M93 145 C120 140, 152 120, 146 96 C140 76, 110 78, 96 100 C98 116, 95 134, 93 145Z"
+          fill="rgba(78,172,108,.18)"/>
+        <!-- 가운데 위 잎 -->
+        <path d="M90 140 C75 120, 74 98, 80 80 C84 68, 96 68, 100 80 C106 98, 105 120, 90 140Z"
+          fill="rgba(95,188,122,.22)"/>
+      </svg>
+
+    </div>
+
+    <!-- Hero 하단 완만한 wave (레퍼런스 기준: 좌에서 중앙 살짝 내려가다 우로 부드럽게) -->
+    <svg class="hero-wave" viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0,20 C360,55 720,60 1080,35 C1200,25 1340,18 1440,28 L1440,70 L0,70 Z" fill="#fff"/>
+    </svg>
+    <div class="hero-content">
+      <!-- Hero 중앙 심볼 -->
+      <div class="hero-symbol-wrap">
+        <img src="./logo.png" alt="">
+      </div>
+      <div class="hero-badge">
+        <span>BRIGHT DREAM FOREST</span>
+      </div>
+      <h1 class="hero-title">BRIDFORE</h1>
+      <p class="hero-tagline">사람과 배움, 진로와 미래를 연결합니다.</p>
+      <div class="hero-desc-box">
+        <p>평생교육, 진로설계, 디지털 역량 교육을 통해<br><strong>개인과 기관의 성장을 돕습니다.</strong></p>
+      </div>
+      <div class="hero-btns">
+        <!-- CTA 버튼 4개 동등 배치 (기준 이미지 기준) -->
+        <button class="btn hero-btn-gold" onclick="scrollToContact('교육 문의')">
+          <i class="fas fa-paper-plane"></i> 교육 문의하기
+        </button>
+        <button class="btn hero-btn-white" onclick="scrollToContact('강의 요청')">
+          <i class="fas fa-chalkboard-teacher"></i> 강의 요청하기
+        </button>
+        <button class="btn hero-btn-outline" onclick="scrollToContact('기관 협업')">
+          <i class="fas fa-building"></i> 기관 협업 문의
+        </button>
+        <button class="btn hero-btn-outline" onclick="scrollToContact('상담 신청')">
+          <i class="fas fa-comments"></i> 상담 신청하기
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 메인 최신 소식 미리보기 -->
+  <section class="section news-preview-section" id="news-preview">
+    <div class="container">
+      <div class="news-preview-header">
+        <div>
+          <span class="section-tag">Latest News</span>
+          <h2 class="section-title">최신 소식</h2>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="scrollToSection('news-section')">
+          전체 보기 <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+      <div class="news-preview-grid" id="newsPreviewGrid">
+        <div class="news-preview-empty">
+          <i class="fas fa-seedling"></i>
+          <p>곧 새로운 소식을 전하겠습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Story</span>
+        <h2 class="section-title">왜 BRIDFORE인가</h2>
+        <div class="title-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-lead">BRIDFORE는 <strong>Bright Dream Forest</strong>의 의미를 담고 있습니다.</p>
+          <p class="about-body">밝은 꿈이 자라고, 배움이 쌓이며, 사람과 사람이 연결되어 함께 성장하는 숲처럼, BRIDFORE는 평생교육, 진로설계, 디지털 역량 교육을 통해 삶과 미래를 잇는 <strong>사람 중심의 교육 브랜드</strong>를 지향합니다.</p>
+          <p class="about-body">우리는 교육이 단지 지식을 전달하는 데 머무르지 않고, 삶의 방향을 찾고, 가능성을 키우며, 미래를 준비하는 힘이 되어야 한다고 믿습니다.</p>
+          <p class="about-body">BRIDFORE는 청년, 중장년, 시니어와 지역사회를 아우르며 배움이 삶과 연결되는 길을 만들어가고자 합니다.</p>
+        </div>
+        <div class="about-values">
+          <div class="value-card"><div class="vc-icon"><i class="fas fa-heart"></i></div><div class="vc-content"><h4>사람 중심</h4><p>학습자의 삶과 상황을 먼저 이해합니다</p></div></div>
+          <div class="value-card"><div class="vc-icon"><i class="fas fa-route"></i></div><div class="vc-content"><h4>미래 연결</h4><p>현재의 배움이 미래로 이어지도록 설계합니다</p></div></div>
+          <div class="value-card"><div class="vc-icon"><i class="fas fa-users"></i></div><div class="vc-content"><h4>함께 성장</h4><p>개인과 지역사회가 함께 발전하는 교육을 추구합니다</p></div></div>
+          <div class="value-card"><div class="vc-icon gold"><i class="fas fa-lightbulb"></i></div><div class="vc-content"><h4>밝은 가능성</h4><p>누구에게나 성장의 기회가 열려있다고 믿습니다</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section services-section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What We Do</span>
+        <h2 class="section-title">BRIDFORE가 하는 일</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">생애 전 단계를 아우르는 맞춤형 교육 서비스를 제공합니다</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="sc-top"><div class="sc-num">01</div><div class="sc-icon"><i class="fas fa-book-open"></i></div></div>
+          <h3 class="sc-title">평생교육 프로그램</h3>
+          <p class="sc-desc">생애 단계에 맞는 학습 기회를 설계하고 누구나 자신의 속도에 맞게 성장할 수 있는 교육 프로그램을 기획합니다.</p>
+          <div class="sc-tags"><span>생애주기 맞춤</span><span>자기 주도 학습</span></div>
+          <button class="sc-more-btn" onclick="scrollToSection('programs-section')">프로그램 보기 <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="service-card">
+          <div class="sc-top"><div class="sc-num">02</div><div class="sc-icon gold"><i class="fas fa-map-signs"></i></div></div>
+          <h3 class="sc-title">진로·생애경력 설계</h3>
+          <p class="sc-desc">청년의 진로 탐색부터 중장년의 전직과 재설계까지 삶과 일을 함께 바라보는 현실적인 진로 설계를 지원합니다.</p>
+          <div class="sc-tags"><span>진로 탐색</span><span>전직 지원</span></div>
+          <button class="sc-more-btn" onclick="scrollToSection('programs-section')">프로그램 보기 <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="service-card">
+          <div class="sc-top"><div class="sc-num">03</div><div class="sc-icon"><i class="fas fa-laptop"></i></div></div>
+          <h3 class="sc-title">디지털 역량 교육</h3>
+          <p class="sc-desc">AI 활용, 스마트폰 활용, 디지털 일상기술 등 변화하는 시대에 꼭 필요한 역량을 쉽게 배우고 실천할 수 있도록 돕습니다.</p>
+          <div class="sc-tags"><span>AI 활용</span><span>디지털 생활기술</span></div>
+          <button class="sc-more-btn" onclick="scrollToSection('programs-section')">프로그램 보기 <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="service-card">
+          <div class="sc-top"><div class="sc-num">04</div><div class="sc-icon gold"><i class="fas fa-building"></i></div></div>
+          <h3 class="sc-title">기관·지역 맞춤형 교육기획</h3>
+          <p class="sc-desc">학교, 기관, 지역사회와 함께 현장 수요에 맞는 교육 프로그램을 기획하고 운영합니다.</p>
+          <div class="sc-tags"><span>기관 협력</span><span>지역사회 연계</span></div>
+          <button class="sc-more-btn" onclick="scrollToContact('기관 협업')">협업 문의 <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="section audience-section" id="audience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who We Serve</span>
+        <h2 class="section-title">이런 분들과 함께합니다</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">세대를 넘어 모든 이의 성장을 지원합니다</p>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="ac-emoji">🌱</div>
+          <h3>청년</h3><p class="ac-age">20~30대</p>
+          <ul class="ac-list">
+            <li><i class="fas fa-check"></i> 진로 탐색</li>
+            <li><i class="fas fa-check"></i> 취업 준비</li>
+            <li><i class="fas fa-check"></i> 실무역량 강화</li>
+          </ul>
+          <button class="ac-btn" onclick="scrollToContact('상담 신청')">상담 신청</button>
+        </div>
+        <div class="audience-card featured">
+          <div class="ac-badge">주요 대상</div>
+          <div class="ac-emoji">🌿</div>
+          <h3>중장년</h3><p class="ac-age">40~50대</p>
+          <ul class="ac-list">
+            <li><i class="fas fa-check"></i> 전직·재취업</li>
+            <li><i class="fas fa-check"></i> 생애경력 설계</li>
+            <li><i class="fas fa-check"></i> 새로운 출발</li>
+          </ul>
+          <button class="ac-btn featured" onclick="scrollToContact('상담 신청')">상담 신청</button>
+        </div>
+        <div class="audience-card">
+          <div class="ac-emoji">🌳</div>
+          <h3>시니어</h3><p class="ac-age">60대 이상</p>
+          <ul class="ac-list">
+            <li><i class="fas fa-check"></i> 디지털 활용</li>
+            <li><i class="fas fa-check"></i> 사회참여</li>
+            <li><i class="fas fa-check"></i> 일상 역량 강화</li>
+          </ul>
+          <button class="ac-btn" onclick="scrollToContact('상담 신청')">상담 신청</button>
+        </div>
+        <div class="audience-card">
+          <div class="ac-emoji">🏫</div>
+          <h3>기관·학교·지역사회</h3><p class="ac-age">단체·기관</p>
+          <ul class="ac-list">
+            <li><i class="fas fa-check"></i> 맞춤형 교육기획</li>
+            <li><i class="fas fa-check"></i> 프로그램 운영</li>
+            <li><i class="fas fa-check"></i> 기관 협력</li>
+          </ul>
+          <button class="ac-btn" onclick="scrollToContact('기관 협업')">협업 문의</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="section trust-section" id="trust">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag light">Why BRIDFORE</span>
+        <h2 class="section-title light">BRIDFORE의 교육은 이렇게 다릅니다</h2>
+        <div class="title-line light"></div>
+        <p class="section-desc light">복잡한 내용을 쉽게 풀어내고, 세대별 특성과 학습자의 상황을 고려해 현장에 맞는 방식으로 교육을 설계합니다.</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-item"><div class="ti-icon"><i class="fas fa-user-heart"></i></div><h4>사람 중심의 교육 설계</h4><p>학습자의 삶과 맥락을 먼저 이해하고, 실질적인 변화를 만드는 교육을 설계합니다.</p></div>
+        <div class="trust-item"><div class="ti-icon"><i class="fas fa-tools"></i></div><h4>현장에서 활용할 수 있는 실용적 교육</h4><p>어렵고 딱딱한 내용을 일상의 언어로 풀어내어 누구나 쉽게 이해하고 실천할 수 있게 합니다.</p></div>
+        <div class="trust-item"><div class="ti-icon"><i class="fas fa-people-group"></i></div><h4>세대 특성을 고려한 맞춤형 운영</h4><p>청년부터 시니어까지 각 세대의 특성과 필요를 반영한 방식으로 교육을 운영합니다.</p></div>
+        <div class="trust-item"><div class="ti-icon"><i class="fas fa-briefcase"></i></div><h4>진로와 직업을 연결하는 현실적 접근</h4><p>이론이 아닌 실제 삶의 변화로 이어지는 진로 설계와 취업 준비를 지원합니다.</p></div>
+        <div class="trust-item"><div class="ti-icon"><i class="fas fa-map-location-dot"></i></div><h4>지역사회와 함께 성장하는 교육기획</h4><p>지역사회의 필요와 특성을 반영하여 현장과 밀착된 교육 프로그램을 함께 만들어갑니다.</p></div>
+        <div class="trust-item highlight-item"><div class="ti-icon gold"><i class="fas fa-star"></i></div><h4>작지만 단단한 전문성</h4><p>규모보다 품질을 중시하는 BRIDFORE만의 방식으로 신뢰할 수 있는 교육을 약속합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS SECTION -->
+  <section class="section programs-section" id="programs-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Programs</span>
+        <h2 class="section-title">사업·프로그램</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">BRIDFORE가 운영하는 교육 사업과 프로그램을 안내합니다</p>
+      </div>
+      <div class="tab-bar" id="programTabBar">
+        <button class="tab-btn active" onclick="filterPrograms('')" data-cat="">전체</button>
+        <button class="tab-btn" onclick="filterPrograms('평생교육')" data-cat="평생교육">평생교육</button>
+        <button class="tab-btn" onclick="filterPrograms('진로·생애경력 설계')" data-cat="진로·생애경력 설계">진로·생애경력</button>
+        <button class="tab-btn" onclick="filterPrograms('디지털·AI 역량 교육')" data-cat="디지털·AI 역량 교육">디지털·AI</button>
+        <button class="tab-btn" onclick="filterPrograms('기관·지역 맞춤형 교육')" data-cat="기관·지역 맞춤형 교육">기관·지역</button>
+      </div>
+      <div class="cards-grid" id="programsGrid">
+        <div class="empty-state"><i class="fas fa-seedling"></i><p>등록된 프로그램이 없습니다.<br>곧 업데이트될 예정입니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS SECTION -->
+  <section class="section news-section" id="news-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">News</span>
+        <h2 class="section-title">소식</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">BRIDFORE의 최신 소식과 교육 일정을 안내합니다</p>
+      </div>
+      <div class="news-tab-bar" id="newsTabBar">
+        <button class="tab-btn active" onclick="filterNews('')" data-cat="">전체</button>
+        <button class="tab-btn" onclick="filterNews('공지사항')" data-cat="공지사항">공지사항</button>
+        <button class="tab-btn" onclick="filterNews('교육 일정')" data-cat="교육 일정">교육 일정</button>
+        <button class="tab-btn" onclick="filterNews('프로그램 모집')" data-cat="프로그램 모집">프로그램 모집</button>
+        <button class="tab-btn" onclick="filterNews('행사 및 강의 안내')" data-cat="행사 및 강의 안내">행사·강의</button>
+      </div>
+      <div id="newsGrid" class="news-list">
+        <div class="empty-state"><i class="fas fa-newspaper"></i><p>등록된 소식이 없습니다.<br>곧 새로운 소식을 전하겠습니다.</p></div>
+      </div>
+      <div class="section-more" id="newsMore" style="display:none;">
+        <button class="btn btn-outline" onclick="loadMoreNews()">더보기 <i class="fas fa-chevron-down"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES SECTION -->
+  <section class="section resources-section" id="resources-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Resources</span>
+        <h2 class="section-title">자료·콘텐츠</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">교육 전문성을 담은 자료와 콘텐츠를 공유합니다</p>
+      </div>
+      <div class="tab-bar" id="resourceTabBar">
+        <button class="tab-btn active" onclick="filterResources('')" data-cat="">전체</button>
+        <button class="tab-btn" onclick="filterResources('교육자료')" data-cat="교육자료">교육자료</button>
+        <button class="tab-btn" onclick="filterResources('강의자료')" data-cat="강의자료">강의자료</button>
+        <button class="tab-btn" onclick="filterResources('진로·직업 콘텐츠')" data-cat="진로·직업 콘텐츠">진로·직업</button>
+        <button class="tab-btn" onclick="filterResources('디지털·AI 콘텐츠')" data-cat="디지털·AI 콘텐츠">디지털·AI</button>
+        <button class="tab-btn" onclick="filterResources('칼럼')" data-cat="칼럼">칼럼</button>
+      </div>
+      <div class="cards-grid" id="resourcesGrid">
+        <div class="empty-state"><i class="fas fa-folder-open"></i><p>등록된 자료가 없습니다.<br>곧 업데이트될 예정입니다.</p></div>
+      </div>
+      <div class="section-more" id="resourcesMore" style="display:none;">
+        <button class="btn btn-outline" onclick="loadMoreResources()">더보기 <i class="fas fa-chevron-down"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS SECTION -->
+  <section class="section press-section" id="press-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Press &amp; Activities</span>
+        <h2 class="section-title">언론·활동</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">다양한 교육 현장과 활동 경험을 바탕으로 BRIDFORE는 체계적인 교육 브랜드로 확장되고 있습니다.</p>
+      </div>
+      <div id="pressGrid" class="press-list">
+        <div class="empty-state"><i class="fas fa-newspaper"></i><p>등록된 언론·활동 내역이 없습니다.<br>곧 업데이트될 예정입니다.</p></div>
+      </div>
+      <div class="section-more" id="pressMore" style="display:none;">
+        <button class="btn btn-outline" onclick="loadMorePress()">더보기 <i class="fas fa-chevron-down"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Contact Us</span>
+        <h2 class="section-title">교육 문의 및 협업 상담</h2>
+        <div class="title-line"></div>
+        <p class="section-desc">강의 요청, 기관 협업, 교육 프로그램 기획 상담이 필요하시면 편하게 남겨주세요.</p>
+      </div>
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <h3>직접 연락하기</h3>
+          <div class="ci-item"><div class="ci-icon"><i class="fas fa-phone"></i></div><div><strong>전화</strong><span>010-8245-3690</span></div></div>
+          <div class="ci-item"><div class="ci-icon"><i class="fas fa-envelope"></i></div><div><strong>이메일</strong><span>bridfore@naver.com</span></div></div>
+          <div class="ci-item"><div class="ci-icon"><i class="fas fa-clock"></i></div><div><strong>운영시간</strong><span>평일 09:00 – 18:00</span></div></div>
+          <div class="contact-note"><i class="fas fa-info-circle"></i><p>문의 접수 후 1~2 영업일 내에 연락드립니다.</p></div>
+        </div>
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">이름 <span class="req">*</span></label>
+                <input type="text" id="name" name="name" placeholder="성함을 입력해주세요" required>
+                <span class="field-error" id="nameError"></span>
+              </div>
+              <div class="form-group">
+                <label for="phone">연락처 <span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+                <span class="field-error" id="phoneError"></span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" placeholder="이메일 주소 (선택)">
+                <span class="field-error" id="emailError"></span>
+              </div>
+              <div class="form-group">
+                <label for="inquiryType">문의 유형 <span class="req">*</span></label>
+                <select id="inquiryType" name="inquiryType" required>
+                  <option value="">문의 유형을 선택해주세요</option>
+                  <option value="교육 문의">교육 문의</option>
+                  <option value="강의 요청">강의 요청</option>
+                  <option value="기관 협업">기관 협업</option>
+                  <option value="상담 신청">상담 신청</option>
+                  <option value="기타 문의">기타 문의</option>
+                </select>
+                <span class="field-error" id="typeError"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">문의 내용 <span class="req">*</span></label>
+              <textarea id="message" name="message" placeholder="문의 내용을 자유롭게 작성해주세요" rows="5" required></textarea>
+              <span class="field-error" id="msgError"></span>
+            </div>
+            <div class="form-privacy">
+              <input type="checkbox" id="privacyAgree" required>
+              <label for="privacyAgree"><a href="privacy.html" target="_blank">개인정보처리방침</a>에 동의합니다 <span class="req">*</span></label>
+              <span class="field-error" id="privacyError"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+              <i class="fas fa-paper-plane"></i> 문의 남기기
+            </button>
+          </form>
+          <div class="form-success" id="formSuccess" style="display:none;">
+            <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+            <h3>문의가 정상적으로 접수되었습니다.</h3>
+            <p>확인 후 빠르게 연락드리겠습니다.</p>
+            <button class="btn btn-outline" onclick="resetForm()">새 문의 작성</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main><!-- /mainSite -->
+
+<!-- ===== ADMIN LOGIN ===== -->
+<section id="admin-section" style="display:none;" class="admin-login-section">
+  <div class="container">
+    <div class="admin-login-wrap">
+      <div class="admin-login-header">
+        <div class="admin-logo"><i class="fas fa-shield-halved"></i></div>
+        <h2>관리자 로그인</h2>
+        <p>BRIDFORE 관리자 전용 페이지입니다</p>
+      </div>
+      <form class="admin-login-form" id="adminLoginForm" novalidate>
+        <div class="form-group">
+          <label for="adminId">관리자 이메일</label>
+          <div class="input-icon-wrap">
+            <i class="fas fa-user"></i>
+            <input type="text" id="adminId" placeholder="아이디를 입력해주세요" autocomplete="username">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="adminPw">비밀번호</label>
+          <div class="input-icon-wrap">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="adminPw" placeholder="비밀번호를 입력해주세요" autocomplete="current-password" required>
+            <button type="button" class="pw-toggle" onclick="togglePw()"><i class="fas fa-eye" id="pwEyeIcon"></i></button>
+          </div>
+        </div>
+        <div class="admin-login-error" id="adminLoginError" style="display:none;"><i class="fas fa-exclamation-circle"></i> 아이디 또는 비밀번호가 일치하지 않습니다.</div>
+        <button type="submit" class="btn btn-primary btn-full"><i class="fas fa-sign-in-alt"></i> 로그인</button>
+      </form>
+      <button class="btn-back-main" onclick="showMainSite()"><i class="fas fa-arrow-left"></i> 메인으로 돌아가기</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ADMIN DASHBOARD ===== -->
+<section id="adminDashboard" style="display:none;" class="admin-dashboard">
+  <div class="admin-topbar">
+    <div class="atb-left"><i class="fas fa-shield-halved"></i><span class="atb-brand">BRIDFORE 관리자</span></div>
+    <div class="atb-right">
+      <button class="btn-logout" onclick="adminLogout()"><i class="fas fa-sign-out-alt"></i> 로그아웃</button>
+    </div>
+  </div>
+  <div class="admin-body">
+    <aside class="admin-sidebar">
+      <nav class="admin-nav">
+        <a class="anav-item active" id="tab-dashboard" onclick="showAdminTab('dashboard')"><i class="fas fa-chart-pie"></i> 대시보드</a>
+        <a class="anav-item" id="tab-inquiries" onclick="showAdminTab('inquiries')"><i class="fas fa-inbox"></i> 문의 관리</a>
+        <a class="anav-item" id="tab-programs" onclick="showAdminTab('programs')"><i class="fas fa-book-open"></i> 사업·프로그램</a>
+        <a class="anav-item" id="tab-news" onclick="showAdminTab('news')"><i class="fas fa-newspaper"></i> 소식</a>
+        <a class="anav-item" id="tab-resources" onclick="showAdminTab('resources')"><i class="fas fa-folder-open"></i> 자료·콘텐츠</a>
+        <a class="anav-item" id="tab-press" onclick="showAdminTab('press')"><i class="fas fa-award"></i> 언론·활동</a>
+        <a class="anav-item" id="tab-stats" onclick="showAdminTab('stats')"><i class="fas fa-chart-bar"></i> 통계</a>
+      </nav>
+    </aside>
+    <main class="admin-content">
+      <!-- Dashboard -->
+      <div id="panel-dashboard" class="admin-panel active">
+        <h2 class="panel-title"><i class="fas fa-chart-pie"></i> 대시보드</h2>
+        <div class="stat-cards" id="statCards"></div>
+        <div class="dashboard-charts">
+          <div class="chart-box"><h3>문의 유형별 현황</h3><div style="height:260px"><canvas id="typeChart"></canvas></div></div>
+          <div class="chart-box"><h3>처리 상태별 현황</h3><div style="height:260px"><canvas id="statusChart"></canvas></div></div>
+        </div>
+        <div class="recent-table-wrap"><h3>최근 문의 내역</h3><div id="recentInquiries"></div></div>
+      </div>
+      <!-- Inquiries -->
+      <div id="panel-inquiries" class="admin-panel" style="display:none;">
+        <h2 class="panel-title"><i class="fas fa-inbox"></i> 문의 관리</h2>
+        <div class="inquiry-controls">
+          <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="이름, 연락처, 내용 검색..." oninput="filterInquiries()"></div>
+          <select id="typeFilter" onchange="filterInquiries()">
+            <option value="">전체 유형</option>
+            <option>교육 문의</option><option>강의 요청</option><option>기관 협업</option><option>상담 신청</option><option>기타 문의</option>
+          </select>
+          <select id="statusFilter" onchange="filterInquiries()">
+            <option value="">전체 상태</option><option>접수 대기</option><option>검토 중</option><option>완료</option>
+          </select>
+          <button class="btn btn-outline btn-sm" onclick="exportCSV()"><i class="fas fa-download"></i> CSV</button>
+        </div>
+        <div id="inquiryTableWrap"></div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+      <!-- Programs Admin -->
+      <div id="panel-programs" class="admin-panel" style="display:none;">
+        <div class="panel-header-row">
+          <h2 class="panel-title"><i class="fas fa-book-open"></i> 사업·프로그램</h2>
+          <button class="btn btn-primary btn-sm" onclick="openItemForm('programs')"><i class="fas fa-plus"></i> 새 프로그램</button>
+        </div>
+        <div id="adminProgramsList"></div>
+      </div>
+      <!-- News Admin -->
+      <div id="panel-news" class="admin-panel" style="display:none;">
+        <div class="panel-header-row">
+          <h2 class="panel-title"><i class="fas fa-newspaper"></i> 소식</h2>
+          <button class="btn btn-primary btn-sm" onclick="openItemForm('news')"><i class="fas fa-plus"></i> 새 소식</button>
+        </div>
+        <div id="adminNewsList"></div>
+      </div>
+      <!-- Resources Admin -->
+      <div id="panel-resources" class="admin-panel" style="display:none;">
+        <div class="panel-header-row">
+          <h2 class="panel-title"><i class="fas fa-folder-open"></i> 자료·콘텐츠</h2>
+          <button class="btn btn-primary btn-sm" onclick="openItemForm('resources')"><i class="fas fa-plus"></i> 새 자료</button>
+        </div>
+        <div id="adminResourcesList"></div>
+      </div>
+      <!-- Press Admin -->
+      <div id="panel-press" class="admin-panel" style="display:none;">
+        <div class="panel-header-row">
+          <h2 class="panel-title"><i class="fas fa-award"></i> 언론·활동</h2>
+          <button class="btn btn-primary btn-sm" onclick="openItemForm('press')"><i class="fas fa-plus"></i> 새 항목</button>
+        </div>
+        <div id="adminPressList"></div>
+      </div>
+      <!-- Stats -->
+      <div id="panel-stats" class="admin-panel" style="display:none;">
+        <h2 class="panel-title"><i class="fas fa-chart-bar"></i> 통계</h2>
+        <div class="stats-charts-grid">
+          <div class="chart-box"><h3>연령대별 문의</h3><div style="height:280px"><canvas id="ageChart"></canvas></div></div>
+          <div class="chart-box"><h3>문의 유형별 비율</h3><div style="height:280px"><canvas id="typeChartStats"></canvas></div></div>
+          <div class="chart-box"><h3>월별 문의 추이</h3><div style="height:280px"><canvas id="monthChart"></canvas></div></div>
+          <div class="chart-box"><h3>처리 상태 현황</h3><div style="height:280px"><canvas id="statusChartStats"></canvas></div></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-wrap">
+            <img src="./logo.png" alt="BRIDFORE" class="footer-logo-img"
+              onerror="this.onerror=null;this.src='./logo-fallback.svg';this.onerror=function(){this.style.display='none';document.getElementById('footerLogoText').style.display='block';};">
+            <div id="footerLogoText" style="display:none;">
+              <span class="fb-brand">BRIDFORE</span>
+              <span class="fb-sub">Bright Dream Forest</span>
+            </div>
+          </div>
+          <p class="footer-tagline">밝은 꿈이 자라는 숲, BRIDFORE</p>
+          <p class="footer-sub-tagline">배움이 삶과 연결되는 교육의 길을 만듭니다.</p>
+        </div>
+        <div class="footer-links">
+          <h4>바로가기</h4>
+          <ul>
+            <li><a onclick="showMainSite();scrollToSection('about')">BRIDFORE 소개</a></li>
+            <li><a onclick="showMainSite();scrollToSection('programs-section')">사업·프로그램</a></li>
+            <li><a onclick="showMainSite();scrollToSection('news-section')">소식</a></li>
+            <li><a onclick="showMainSite();scrollToSection('resources-section')">자료·콘텐츠</a></li>
+            <li><a onclick="showMainSite();scrollToSection('press-section')">언론·활동</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>연락처</h4>
+          <div class="fc-item"><i class="fas fa-phone"></i><span>010-8245-3690</span></div>
+          <div class="fc-item"><i class="fas fa-envelope"></i><span>bridfore@naver.com</span></div>
+          <div class="fc-item"><i class="fas fa-clock"></i><span>평일 09:00 – 18:00</span></div>
+          <button class="btn btn-outline btn-sm footer-contact-btn" onclick="showMainSite();scrollToSection('contact')" style="margin-top:14px;">문의하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="fb-bottom-wrap">
+        <p class="copyright">© 2026 BRIDFORE. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy.html" target="_blank">개인정보처리방침</a>
+          <span>|</span>
+          <a href="terms.html" target="_blank">이용약관</a>
+          <span>|</span>
+          <button class="footer-admin-btn" onclick="showAdminLogin()">관리자</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Content Detail Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+<div class="modal" id="contentModal">
+  <div class="modal-header">
+    <h3 id="modalTitle">상세 보기</h3>
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="modal-body" id="modalBody"></div>
+  <div class="modal-footer"><button class="btn btn-outline btn-sm" onclick="closeModal()">닫기</button></div>
+</div>
+
+<!-- Admin Item Form Modal -->
+<div class="modal-overlay" id="formModalOverlay" onclick="closeFormModal()"></div>
+<div class="modal modal-lg" id="adminFormModal">
+  <div class="modal-header">
+    <h3 id="formModalTitle">항목 등록</h3>
+    <button class="modal-close" onclick="closeFormModal()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="modal-body" id="adminFormBody"></div>
+  <div class="modal-footer">
+    <button class="btn btn-outline btn-sm" onclick="closeFormModal()">취소</button>
+    <button class="btn btn-primary btn-sm" id="saveItemBtn" onclick="saveItem()"><i class="fas fa-save"></i> 저장</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
