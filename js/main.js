@@ -218,22 +218,50 @@ async function showAdminDashboard() {
 }
 
 async function adminLogout() {
+  // 현재 토큰을 먼저 확보
   const session = getAdminSession();
-  try {
-    if (session?.access_token) {
-      await fetch(`${SUPABASE_AUTH_URL}/logout`, {
-        method: 'POST',
-        headers: {
-          apikey: SUPABASE_PUBLISHABLE_KEY,
-          Authorization: `Bearer ${session.access_token}`
+  const accessToken = session?.access_token;
+
+  // 로컬 관리자 세션은 즉시 제거
+  clearAdminSession();
+
+  // 관리자 관련 메모리 데이터도 제거
+  allInquiries = [];
+  filteredInquiries = [];
+  editingItem = null;
+  currentAdminTab = 'dashboard';
+
+  // 화면은 즉시 메인으로 전환
+  showMainSite();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // 서버 측 Supabase 세션 무효화는 그 다음 수행
+  if (accessToken) {
+    try {
+      const res = await fetch(
+        `${SUPABASE_AUTH_URL}/logout`,
+        {
+          method: 'POST',
+          headers: {
+            apikey: SUPABASE_PUBLISHABLE_KEY,
+            Authorization: `Bearer ${accessToken}`
+          }
         }
-      });
+      );
+
+      if (!res.ok) {
+        console.warn(
+          'Supabase logout 실패:',
+          res.status,
+          await res.text()
+        );
+      }
+    } catch (e) {
+      console.warn(
+        'Supabase logout 요청 실패:',
+        e
+      );
     }
-  } catch (e) {
-    console.warn('Supabase logout 요청 실패:', e);
-  } finally {
-    clearAdminSession();
-    showMainSite();
   }
 }
 
